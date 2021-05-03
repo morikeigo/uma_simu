@@ -4,95 +4,34 @@ th,td {border: solid 1px #000000;}
 </style>
 <html>
 	<div id="app">
-		{{ message }}
+		<table>
+			<tr>
+				<th>スピード</th>
+				<th>スタミナ</th>
+				<th>パワー</th>
+				<th>根性</th>
+				<th>賢さ</th>
+			</tr>
+			<tr>
+				<td> <div id='d1'>aaa</div></td>
+				<td> <div id='d2'></div></td>
+				<td> <div id='d3'></div></td>
+				<td> <div id='d4'></div></td>
+				<td> <div id='d5'></div></td>
+			</tr>
+		</table>
 		<support
 			v-for="item in supportStatus"
 			v-bind:item='item'
 			v-bind:key="item.id"></support>
 	</div>
-	<table>
-		<tr>
-			<th>スピード</th>
-			<th>スタミナ</th>
-			<th>パワー</th>
-			<th>根性</th>
-			<th>賢さ</th>
-		</tr>
-		<tr>
-			<td> <div id='d1'>aaa</div></td>
-			<td> <div id='d2'></div></td>
-			<td> <div id='d3'></div></td>
-			<td> <div id='d4'></div></td>
-			<td> <div id='d5'></div></td>
-		</tr>
-	</table>
-	<div>サポート1</div>
-	タイプ：
-	<select id="sup1type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup1tok" onchange="refleshTokui(this)"><br/>
-	<div>サポート2</div>
-	タイプ：
-	<select id="sup2type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup2tok"><br/>
-	<div>サポート3</div>
-	タイプ：
-	<select id="sup3type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup3tok"><br/>
-	<div>サポート4</div>
-	タイプ：
-	<select id="sup4type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup4tok"><br/>
-	<div>サポート5</div>
-	タイプ：
-	<select id="sup5type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup5tok"><br/>
-	<div>サポート6</div>
-	タイプ：
-	<select id="sup6type">
-		<option value="1">スピード</option>
-		<option value="2">スタミナ</option>
-		<option value="3">パワー</option>
-		<option value="4">根性</option>
-		<option value="5">賢さ</option>
-	</select>
-	得意率 :<input id="sup6tok">
 </html>
 
 <script>
 	
 	Vue.component('support',{
 		props: ['item'],
-		template: '<div>サポート{{item.id}}</div><p>test</p>'
+		template: '<div>サポート{{item.id}}<br /> タイプ ： <select><option>スピード</option></select> 得意率：<input /></div>'
 	})
 	
 	var app = new Vue({
