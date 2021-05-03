@@ -1,0 +1,181 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<style>
+th,td {border: solid 1px #000000;}
+</style>
+<html>
+	<div id="app">
+		{{ message }}
+		<support
+			v-for="item in supportStatus"
+			v-bind:item='item'
+			v-bind:key="item.id"></support>
+	</div>
+	<table>
+		<tr>
+			<th>スピード</th>
+			<th>スタミナ</th>
+			<th>パワー</th>
+			<th>根性</th>
+			<th>賢さ</th>
+		</tr>
+		<tr>
+			<td> <div id='d1'>aaa</div></td>
+			<td> <div id='d2'></div></td>
+			<td> <div id='d3'></div></td>
+			<td> <div id='d4'></div></td>
+			<td> <div id='d5'></div></td>
+		</tr>
+	</table>
+	<div>サポート1</div>
+	タイプ：
+	<select id="sup1type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup1tok" onchange="refleshTokui(this)"><br/>
+	<div>サポート2</div>
+	タイプ：
+	<select id="sup2type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup2tok"><br/>
+	<div>サポート3</div>
+	タイプ：
+	<select id="sup3type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup3tok"><br/>
+	<div>サポート4</div>
+	タイプ：
+	<select id="sup4type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup4tok"><br/>
+	<div>サポート5</div>
+	タイプ：
+	<select id="sup5type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup5tok"><br/>
+	<div>サポート6</div>
+	タイプ：
+	<select id="sup6type">
+		<option value="1">スピード</option>
+		<option value="2">スタミナ</option>
+		<option value="3">パワー</option>
+		<option value="4">根性</option>
+		<option value="5">賢さ</option>
+	</select>
+	得意率 :<input id="sup6tok">
+</html>
+
+<script>
+	
+	Vue.component('support',{
+		props: ['item'],
+		template: '<div>サポート{{item.id}}</div><p>test</p>'
+	})
+	
+	var app = new Vue({
+		el: '#app',
+		data: {
+			message: 'Hello Vue!',
+			supportStatus:[
+				{ id:1},
+				{ id:2},
+			]
+		}
+	})
+
+	// test2
+	randomize2([10,11,12]);
+	
+	
+	var statusName = [ 'sp', 'st', 'pw', 'kn', 'ks', 'na'];
+	
+	function calcTokui(addNum){
+		var d1 = document.getElementById("d1");
+		d1.innerText = 'test';
+		
+		var sp = 100;
+		var st = 100;
+		var pw = 100;
+		var kn = 100;
+		var ks = 100;
+		var na = 50;
+		
+		var sp = Number(sp) + Number(addNum);
+		
+		d1.innerText = sp / (sp+st+pw+kn+ks+na);
+		d2.innerText = st / (sp+st+pw+kn+ks+na);
+		d3.innerText = pw / (sp+st+pw+kn+ks+na);
+		d4.innerText = kn / (sp+st+pw+kn+ks+na);
+		d5.innerText = ks / (sp+st+pw+kn+ks+na);
+		//d1.innerText = na / (sp+st+pw+kn+ks+na);
+		
+		
+		console.log((sp+st+pw+kn+ks+na));
+		console.log(randomize(sp+st+pw+kn+ks+na));
+		
+		
+	}
+	
+	function refleshTokui(tokui){
+		if(!isNaN(tokui.value)){
+			calcTokui(tokui.value);
+		}else{
+			
+		}
+	}
+	
+	function randomize(sum){
+		
+	
+		return Math.random()*sum;
+	}
+	
+	// 数値配列の中から一つをランダムで抽出する。
+	// 配列の中の数値が大きいほど選択される確率は上がる。
+	// 戻り値：選択されたキー値
+	function randomize2(nums){
+		var randomNumber = Math.random()*aryToSum(nums);
+		console.log(aryToSum(nums));
+		console.log(randomNumber);
+		console.log(selectKey(nums, randomNumber));
+		return selectKey(nums, randomNumber);
+	}
+	
+	function aryToSum(ary){
+		return ary.reduce((sum, element)=> sum + element, 0);
+	}
+	
+	function selectKey(ary, num){
+		var currentSum = 0;
+		for(var i=0; i<ary.length; i++){
+			currentSum = ary[i] + currentSum;
+			if(currentSum >= num){
+				return i;
+			}
+		}
+		return null;
+	}
+</script>
