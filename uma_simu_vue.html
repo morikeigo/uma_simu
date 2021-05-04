@@ -31,7 +31,12 @@ th,td {border: solid 1px #000000;}
 	
 	Vue.component('support',{
 		props: ['item'],
-		template: '<div>サポート{{item.id}}<br /> タイプ ： <select><option>スピード</option></select> 得意率：<input /></div>'
+		template: '<div>サポート{{item.id}}<br />\
+		 タイプ ： <select>\
+		 	<option>スピード</option>\
+		 	\
+		 </select>\
+		 得意率：<input /></div>'
 	})
 	
 	var app = new Vue({
