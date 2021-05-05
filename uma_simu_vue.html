@@ -28,15 +28,17 @@ th,td {border: solid 1px #000000;}
 </html>
 
 <script>
-	
 	Vue.component('support',{
-		props: ['item'],
+		props: ['item','type','tokui'],
 		template: '<div>サポート{{item.id}}<br />\
-		 タイプ ： <select>\
-		 	<option>スピード</option>\
-		 	\
+		 タイプ ： <select v-model="type">\
+		 	<option value="1">スピード</option>\
+		 	<option value="2">スタミナ</option>\
+		 	<option value="3">パワー</option>\
+		 	<option value="4">根性</option>\
+		 	<option value="5">賢さ</option>\
 		 </select>\
-		 得意率：<input /></div>'
+		 得意率：<input v-model="tokui" />{{type}}{{tokui}}</div>'
 	})
 	
 	var app = new Vue({
