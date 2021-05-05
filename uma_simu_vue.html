@@ -38,8 +38,22 @@ th,td {border: solid 1px #000000;}
 		 	<option value="4">根性</option>\
 		 	<option value="5">賢さ</option>\
 		 </select>\
-		 得意率：<input v-model="tokui" />{{type}}{{tokui}}</div>'
+		 得意率：<input v-model="tokui" />{{tokui}}</div>'
 	})
+	/*
+	Vue.component('table', {
+		props: [],
+		template: ''
+	})
+	
+	var statusNamek ={
+		sp:スピード,
+		st:スタミナ,
+		pw:パワー,
+		kn:根性,
+		ks:賢さ
+	}
+	*/
 	
 	var app = new Vue({
 		el: '#app',
