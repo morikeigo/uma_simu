@@ -4,22 +4,7 @@ th,td {border: solid 1px #000000;}
 </style>
 <html>
 	<div id="app">
-		<table>
-			<tr>
-				<th>スピード</th>
-				<th>スタミナ</th>
-				<th>パワー</th>
-				<th>根性</th>
-				<th>賢さ</th>
-			</tr>
-			<tr>
-				<td> <div id='d1'>aaa</div></td>
-				<td> <div id='d2'></div></td>
-				<td> <div id='d3'></div></td>
-				<td> <div id='d4'></div></td>
-				<td> <div id='d5'></div></td>
-			</tr>
-		</table>
+		<grow-table></grow-table>
 		<support
 			v-for="item in supportStatus"
 			v-bind:item='item'
@@ -40,28 +25,33 @@ th,td {border: solid 1px #000000;}
 		 </select>\
 		 得意率：<input v-model="tokui" />{{tokui}}</div>'
 	})
-	/*
-	Vue.component('table', {
-		props: [],
-		template: ''
-	})
 	
-	var statusNamek ={
-		sp:スピード,
-		st:スタミナ,
-		pw:パワー,
-		kn:根性,
-		ks:賢さ
-	}
-	*/
+	Vue.component('growTable', {
+		props: ['item'],
+		template: '\
+		<table>\
+			<tr><th>スピード</th><th>スタミナ</th><th>パワー</th><th>根性</th><th>賢さ</th></tr>\
+			<tr>\
+				<td> <p>aaa</p></td>\
+				<td> <p></p></td>\
+				<td> <p></p></td>\
+				<td> <p></p></td>\
+				<td> <p></p></td>\
+			</tr>\
+		</table>\
+		'
+	})
 	
 	var app = new Vue({
 		el: '#app',
 		data: {
-			message: 'Hello Vue!',
 			supportStatus:[
 				{ id:1},
 				{ id:2},
+				{ id:3},
+				{ id:4},
+				{ id:5},
+				{ id:6},
 			]
 		}
 	})
